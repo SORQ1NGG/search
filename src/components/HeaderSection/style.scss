@@ -17,6 +17,6 @@
     align-items: center;
     height: 100%;
     column-gap: 1%;
-    max-width: calc(1820px + $gContent * 2);
+    max-width: calc(1820px + var(--gContent) * 2);
   }
 }

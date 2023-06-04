@@ -6,6 +6,7 @@ export default {
 
 <script setup>
 import LogoLink from '@/components/LogoLink/index.vue';
+import HeaderSectionMenu from '@/components/HeaderSection/HeaderSectionMenu/index.vue';
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import LogoLink from '@/components/LogoLink/index.vue';
         <div class="header__inner">
             <div class="content-container header__content">
                 <LogoLink />
+                <HeaderSectionMenu />
             </div>
         </div>
     </header>

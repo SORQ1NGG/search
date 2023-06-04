@@ -1,0 +1,14 @@
+.git {
+  &-link {
+    font-size: 18px;
+    a {
+      transition: color .5s ease-in-out;
+      color: $cWhite;
+      text-decoration: none;
+      &:hover {
+        transition: color .1s ease-in-out;
+        color: var(--cHover);
+      }
+    }
+  }
+}
