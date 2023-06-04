@@ -54,6 +54,7 @@ export default {
 
         async fetchUsersList ({ commit, getters, dispatch }, { searchUsers, perPageUsers, reposUsers, orderUsers }) {
             const response = await Users.getUsersList(searchUsers, perPageUsers, reposUsers, orderUsers);
+            // eslint-disable-next-line camelcase
             const { items, total_count } = response;
 
             commit('SET_USERS_TOTAL_COUNT', total_count);
