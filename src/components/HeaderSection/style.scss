@@ -1,0 +1,22 @@
+.header {
+  z-index: 100;
+  pointer-events: none;
+  background-color: transparent;
+
+  &__inner {
+    height: 90px;
+    width: 100%;
+    position: relative;
+    background-color: $cBlack;
+    pointer-events: auto;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    column-gap: 1%;
+    max-width: calc(1820px + $gContent * 2);
+  }
+}

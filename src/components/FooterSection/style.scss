@@ -1,0 +1,8 @@
+.footer {
+  margin-top: auto;
+  &__inner {
+    padding: 45px 30px 37px;
+    background-color: $cBlack;
+    color: $cWhite;
+  }
+}
