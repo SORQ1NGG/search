@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import createSvgSpritePlugin from 'vite-plugin-svg-sprite';
 import { fileURLToPath, URL } from 'url';
 
 export default defineConfig({
-    plugins: [vue()],
+    plugins: [vue(),
+        createSvgSpritePlugin({
+            symbolId: 'icon-[name]-[hash]',
+        })],
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -18,6 +22,7 @@ export default defineConfig({
             },
         },
     },
+
     test: {
         globals: true,
         environment: 'jsdom',

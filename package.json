@@ -2,7 +2,6 @@
   "name": "git-project",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -28,6 +27,7 @@
     "sass": "^1.62.1",
     "sass-loader": "^13.3.1",
     "vite": "^4.3.9",
+    "vite-plugin-svg-sprite": "^0.3.2",
     "vitest": "^0.31.4",
     "vue-eslint-parser": "^9.3.0"
   }
