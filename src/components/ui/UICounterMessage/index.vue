@@ -20,11 +20,6 @@ const counterMessage = computed(() => {
         : (props.usersCount === 0)
             ? 'По вашему запросу пользователей не найдено'
             : null;
-    // if (props.usersCount > 0) {
-    //     return `Найдено ${props.usersCount} пользователей`;
-    // } else if (props.usersCount === 0) {
-    //     return 'По вашему запросу пользователей не найдено';
-    // }
 });
 </script>
 
