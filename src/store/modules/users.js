@@ -1,5 +1,4 @@
 import { Users } from '@/api/users.js';
-import { sortByKey } from '@/utils/helpers/helpers.js';
 
 const getDefaultState = () => ({
     userRepos: [],
@@ -46,10 +45,6 @@ export default {
         SET_USERS_TOTAL_COUNT (state, data) {
             state.totalCount = data;
         },
-
-        SORT_USERS_REPOS (state, { key, descSort }) {
-            sortByKey(state.items, key, descSort);
-        },
     },
 
     actions: {
@@ -76,14 +71,5 @@ export default {
         async fetchUserFollowing ({ commit }, name) {
             commit('SET_USER_FOLLOWING', await Users.getUserFollowing(name));
         },
-
-        // async fetchUserData ({ commit }, name) {
-        //     const response = await Users.getUserData(name);
-        //     const [following, followers, repos] = response;
-        //
-        //     commit('SET_USER_REPOS', repos);
-        //     commit('SET_USER_FOLLOWERS', followers);
-        //     commit('SET_USER_FOLLOWING', following);
-        // },
     },
 };
