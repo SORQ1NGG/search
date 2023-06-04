@@ -25,12 +25,10 @@ export function useUsers () {
         const perPageUsers = perPage.value;
         const reposUsers = repos.value;
         const orderUsers = order.value;
-        loading.value = true;
         await store.dispatch('users/fetchUsersList', { searchUsers, perPageUsers, reposUsers, orderUsers });
-        loading.value = false;
     };
 
-    const ascDesc = async () => {
+    const sortUsersRepo = async () => {
         order.value = order.value === 'desc' ? 'asc' : 'desc';
         await getUsers();
     };
@@ -46,6 +44,7 @@ export function useUsers () {
 
     const clearUsers = async () => {
         perPage.value = USER_PER_PAGE;
+        order.value = 'desc';
         usersData.value = {};
         await store.dispatch('users/clearSearchUsers');
     };
@@ -56,7 +55,9 @@ export function useUsers () {
         } else {
             perPage.value += 1;
         }
+        loading.value = true;
         await getUsers();
+        loading.value = false;
     };
 
     const toggleLoadMoreButton = usersCount => {
@@ -87,12 +88,13 @@ export function useUsers () {
         filterSearch,
         usersData,
         showModal,
+        order,
         getUsers,
         showUser,
         loadMoreUsers,
         toggleLoadMoreButton,
         toggleModal,
         fetchUserDescription,
-        ascDesc,
+        sortUsersRepo,
     };
 }
