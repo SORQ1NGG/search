@@ -6,6 +6,7 @@ export default {
 
 <script setup>
 import { ref } from 'vue';
+import CircleLoader from '@/components/ui/loaders/CircleLoader/index.vue';
 
 const emit = defineEmits(['load-users']);
 
@@ -13,6 +14,9 @@ const props = defineProps({
     tag: {
         type: String,
         default: 'button',
+    },
+    loading: {
+        type: Boolean,
     },
 });
 const root = ref(null);
@@ -26,7 +30,8 @@ const root = ref(null);
         class="button-load"
         @click="emit('load-users')"
     >
-        Загрузить еще
+        <slot v-if="!props.loading" />
+        <CircleLoader v-else />
     </component>
 </template>
 

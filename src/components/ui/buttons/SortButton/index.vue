@@ -6,6 +6,7 @@ export default {
 
 <script setup>
 import { ref } from 'vue';
+import UISymbol from '@/components/ui/UISymbol/index.vue';
 
 const emit = defineEmits(['sort-items']);
 
@@ -26,7 +27,7 @@ const root = ref(null);
         class="button-sort"
         @click="emit('sort-items')"
     >
-        Сортировка по количеству репозиториев
+        <UISymbol class="sort" />
     </component>
 </template>
 
