@@ -7,7 +7,12 @@ export default {
 <template>
     <footer class="footer">
         <div class="footer__inner">
-            Search
+            <div class="footer__inner-text">
+                GIT SEARCH APP
+            </div>
+            <div class="footer__inner-copyright">
+                copyright 2023
+            </div>
         </div>
     </footer>
 </template>
