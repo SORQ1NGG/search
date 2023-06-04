@@ -5,6 +5,8 @@ export default {
 </script>
 
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps({
     login: {
         type: [String, Object],
@@ -15,13 +17,20 @@ const props = defineProps({
         default: '',
     },
 });
+
+const avatarPath = computed(() => {
+    if (!props.avatar) return '';
+
+    return props.avatar;
+});
 </script>
 
 <template>
     <div class="users__item">
         <img
+            v-if="avatarPath"
             class="users__item-img"
-            :src="`${props.avatar}`"
+            :src="`${avatarPath}`"
             alt="img"
         >
         <span class="users__item-name">{{ props.login }}</span>
