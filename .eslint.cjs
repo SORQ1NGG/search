@@ -72,8 +72,6 @@ module.exports = {
         'array-bracket-newline': ['error', 'consistent'],
         'array-element-newline': ['error', 'consistent'],
         'lines-between-class-members': ['error', 'always', {exceptAfterSingleLine: true}],
-        'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'vue/html-indent': ['error', 4, {
             attribute: 1,
             baseIndent: 1,
