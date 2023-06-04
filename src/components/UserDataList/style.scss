@@ -1,0 +1,16 @@
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.user-list-item {
+  margin: 5px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.user-list-link {
+  background-color: transparent;
+}
