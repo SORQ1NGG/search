@@ -6,7 +6,6 @@ export default {
 
 <script setup>
 import { useStore } from 'vuex';
-import { onUpdated } from 'vue';
 import UsersItem from '@/components/items/UsersItem/index.vue';
 import { useUsers } from '@/composables/users-list.js';
 import SearchItems from '@/components/items/SearchItems/index.vue';
@@ -14,7 +13,7 @@ import UserDescriptionItem from '@/components/items/UserDescriptionItem/index.vu
 import LoadButton from '@/components/ui/buttons/LoadButton/index.vue';
 import BaseModal from '@/components/BaseModal/index.vue';
 import SortButton from '@/components/ui/buttons/SortButton/index.vue';
-import CounterMessage from '@/components/ui/CounterMessage/index.vue';
+import CounterMessage from '@/components/ui/UICounterMessage/index.vue';
 
 const store = useStore();
 
@@ -22,30 +21,31 @@ const {
     searchUsers,
     usersData,
     showModal,
+    loading,
+    order,
     loadMoreUsers,
     toggleLoadMoreButton,
     showUser,
     toggleModal,
-    ascDesc,
+    sortUsersRepo,
 } = useUsers();
 
 const closeUserModal = () => {
     toggleModal(false);
 };
 
-onUpdated(() => {
-    console.log(store.getters['users/items']);
-});
-
 </script>
 
 <template>
     <SearchItems @search="event => searchUsers(event)" />
-    <CounterMessage :users-count="store.getters['users/totalCount']" />
-    <SortButton
-        v-if="store.getters['users/items'].length"
-        @sort-items="ascDesc"
-    />
+    <div class="users-action">
+        <CounterMessage :users-count="store.getters['users/totalCount']" />
+        <SortButton
+            v-if="store.getters['users/items'].length"
+            :class="{'activeSort': order === 'asc'}"
+            @sort-items="sortUsersRepo"
+        />
+    </div>
     <div class="users-content">
         <div class="users-content__list">
             <UsersItem
@@ -58,8 +58,11 @@ onUpdated(() => {
         </div>
         <LoadButton
             v-show="toggleLoadMoreButton(store.getters['users/totalCount'])"
+            :loading="loading"
             @load-users="loadMoreUsers"
-        />
+        >
+            <span>Загрузить еще</span>
+        </LoadButton>
         <BaseModal
             v-if="showModal"
             :is-open="showModal"
