@@ -9,4 +9,17 @@ export default defineConfig({
             '@': fileURLToPath(new URL('./src', import.meta.url)),
         },
     },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: `
+                    @import "@/assets/css/variables-sass.scss";
+                    `,
+            },
+        },
+    },
+    test: {
+        globals: true,
+        environment: 'jsdom',
+    },
 });
