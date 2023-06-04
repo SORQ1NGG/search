@@ -5,13 +5,13 @@
 }
 
 html {
-  font-size: $baseRem;
+  font-size: var(--rem);
 }
 
 body {
   min-width: 375px;
   margin: 0;
-  background-color: $cWhite;
+  background-color: var(--bcBody);
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -20,7 +20,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
-  color: $cBlack;
   cursor: default;
 }
 
@@ -28,7 +27,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: calc(100 * 1vh);
+  min-height: calc(100 * var(--vh));
 }
 
 .page {
