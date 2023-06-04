@@ -32,10 +32,12 @@ const props = defineProps({
 
 <template>
     <div v-if="props.userData.avatar_url && props.userData.login" class="user">
-        <img :src="props.userData.avatar_url" alt="img">
-        <h2 class="user-name">
-            {{ props.userData.login }}
-        </h2>
+        <div class="user-name">
+            <img :src="props.userData.avatar_url" alt="img">
+            <h2 class="user-name">
+                {{ props.userData.login }}
+            </h2>
+        </div>
         <UsersList :users-data="props.userFollowing" :title="'Following'" />
         <UsersList :users-data="props.userFollowers" :title="'Followers'" />
         <UsersList :users-data="props.userRepos" :title="'Repositories'" />

@@ -1,1 +1,7 @@
-
+.user {
+  display: flex;
+  justify-content: space-between;
+  &-name {
+    margin-right: 30px;
+  }
+}
