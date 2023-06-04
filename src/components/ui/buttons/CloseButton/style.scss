@@ -1,0 +1,12 @@
+.button-close {
+  background: $cBlack;
+  color: $cWhite;
+  border-radius: 10px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
