@@ -15,7 +15,7 @@ const props = defineProps({
     isOpen: {
         type: Boolean,
     },
-    loadingUsers: {
+    loadingUserInfo: {
         type: Boolean,
     },
 });
@@ -57,7 +57,7 @@ onUnmounted(() => {
                         <CloseButton @click="close" />
                     </div>
                     <div class="modal-body">
-                        <slot v-if="!props.loadingUsers" />
+                        <slot v-if="!props.loadingUserInfo" />
                         <HorizontalLoader v-else />
                     </div>
                 </div>
