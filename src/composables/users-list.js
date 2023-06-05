@@ -15,6 +15,7 @@ export function useUsers () {
     const order = ref('desc');
 
     const showModal = ref(false);
+    const loadingDescription = ref(true);
 
     const toggleModal = force => {
         showModal.value = force ?? !showModal.value;
@@ -25,7 +26,9 @@ export function useUsers () {
         const perPageUsers = perPage.value;
         const reposUsers = repos.value;
         const orderUsers = order.value;
+        loading.value = true;
         await store.dispatch('users/fetchUsersList', { searchUsers, perPageUsers, reposUsers, orderUsers });
+        loading.value = false;
     };
 
     const sortUsersRepo = async () => {
@@ -55,9 +58,7 @@ export function useUsers () {
         } else {
             perPage.value += 1;
         }
-        loading.value = true;
         await getUsers();
-        loading.value = false;
     };
 
     const toggleLoadMoreButton = usersCount => {
@@ -75,15 +76,16 @@ export function useUsers () {
     const showUser = async name => {
         toggleModal(true);
         const { login } = name;
-        loading.value = true;
+        loadingDescription.value = true;
         await fetchUserDescription(login);
-        loading.value = false;
+        loadingDescription.value = false;
         usersData.value = { login: name, avatar_url: login.avatar_url };
     };
 
     return {
         searchUsers,
         loading,
+        loadingDescription,
         perPage,
         filterSearch,
         usersData,
