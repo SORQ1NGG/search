@@ -24,16 +24,13 @@ const props = defineProps({
         type: Array,
         default: () => [],
     },
-    loadingImg: {
-        type: Boolean,
-    },
 });
 </script>
 
 <template>
     <div v-if="props.userData.avatar_url && props.userData.login" class="user">
         <div class="user-name">
-            <img :src="props.userData.avatar_url" alt="img">
+            <img :src="props.userData.avatar_url" alt="img" loading="lazy">
             <h2 class="user-name">
                 {{ props.userData.login }}
             </h2>

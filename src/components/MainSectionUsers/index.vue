@@ -14,6 +14,7 @@ import LoadButton from '@/components/ui/buttons/LoadButton/index.vue';
 import BaseModal from '@/components/BaseModal/index.vue';
 import SortButton from '@/components/ui/buttons/SortButton/index.vue';
 import CounterMessage from '@/components/ui/UICounterMessage/index.vue';
+import HorizontalLoader from '@/components/ui/loaders/HorizontalLoader/index.vue';
 
 const store = useStore();
 
@@ -22,6 +23,7 @@ const {
     usersData,
     showModal,
     loading,
+    loadingDescription,
     order,
     loadMoreUsers,
     toggleLoadMoreButton,
@@ -47,24 +49,28 @@ const closeUserModal = () => {
         />
     </div>
     <div class="users-content">
+        <HorizontalLoader v-if="loading" />
         <div class="users-content__list">
             <UsersItem
                 v-for="item in store.getters['users/items']"
                 :key="item.id"
+                :class="{'loading': loading}"
                 :login="item.login"
                 :avatar="item.avatar_url"
+                :loading="loading"
                 @click="showUser(item)"
             />
         </div>
         <LoadButton
             v-show="toggleLoadMoreButton(store.getters['users/totalCount'])"
             :loading="loading"
+            :disabled="loading"
             @load-users="loadMoreUsers"
         />
         <BaseModal
             v-if="showModal"
             :is-open="showModal"
-            :loading-user-info="loading"
+            :loading-user-info="loadingDescription"
             @close="closeUserModal"
         >
             <UserDescriptionItem
