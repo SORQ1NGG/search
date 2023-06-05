@@ -26,12 +26,15 @@ const root = ref(null);
     <component
         :is="props.tag"
         ref="root"
+        role="button"
         type="button"
         class="button-load"
         @click="emit('load-users')"
     >
-        <slot v-if="!props.loading" />
-        <CircleLoader v-else />
+        <span v-if="!props.loading">
+            Загрузить еще
+        </span>
+        <CircleLoader v-else data-testid="circle-loader" />
     </component>
 </template>
 

@@ -60,9 +60,7 @@ const closeUserModal = () => {
             v-show="toggleLoadMoreButton(store.getters['users/totalCount'])"
             :loading="loading"
             @load-users="loadMoreUsers"
-        >
-            <span>Загрузить еще</span>
-        </LoadButton>
+        />
         <BaseModal
             v-if="showModal"
             :is-open="showModal"
