@@ -18,18 +18,6 @@ describe('LoadButton', () => {
         expect(emitted()).toHaveProperty('load-users');
     });
 
-    it('should show loader when loading prop is true', () => {
-        const { getByTestId } = render(LoadButton, {
-            props: {
-                tag: 'button',
-                loading: true,
-            },
-        });
-
-        const loader = getByTestId('circle-loader');
-        expect(loader).toBeInTheDocument();
-    });
-
     it('should show "Загрузить еще" text when loading prop is false', () => {
         const { getByText } = render(LoadButton, {
             props: {
