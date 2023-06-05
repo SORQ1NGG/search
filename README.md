@@ -9,7 +9,7 @@ https://github.com/SORQ1NGG/search.git
 
 ## Navigate to the project folder
 ```
-cd GIT-project
+cd git-project
 ```
 
 ## Project setup
