@@ -20,6 +20,7 @@ const emit = defineEmits(['search']);
         label-text="Git"
         with-icon
         type="text"
+        focus-on-mounted
         type-modifiers="search"
         :placeholder="'Search login...'"
         @keyup="emit('search', searchData)"

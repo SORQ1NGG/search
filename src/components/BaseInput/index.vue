@@ -20,17 +20,17 @@ const props = defineProps({
         type: String,
         default: '',
     },
-    withIcon: {
-        type: Boolean,
-    },
     placeholder: {
         type: [String, Number],
         required: false,
         default: '',
     },
+    focusOnMounted: {
+        type: Boolean,
+    },
 });
 
-const emit = defineEmits(['update:modelValue', 'input-blur']);
+const emit = defineEmits(['update:modelValue']);
 
 const onInput = e => {
     emit('update:modelValue', e.target.value.trim());
