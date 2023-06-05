@@ -24,3 +24,8 @@
 .activeSort {
   transform: rotate(180deg);
 }
+
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
