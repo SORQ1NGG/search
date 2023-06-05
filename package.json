@@ -18,7 +18,9 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.21.8",
     "@babel/preset-env": "^7.22.2",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/vue": "^7.0.0",
+    "@types/testing-library__jest-dom": "^5.14.6",
     "@vitejs/plugin-vue": "^4.1.0",
     "@vue/eslint-config-standard": "^8.0.1",
     "eslint": "8.22.0",
