@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { ROUTE_NAMES } from '@/constants/router.js';
+import store from '@/store';
 
 const routeOptions = [
     {
@@ -25,11 +26,19 @@ const routes = [
         component: async () => {
             let component = null;
 
+            const timerId = setTimeout(() => {
+                store.commit('SET_TOGGLE_ROUTE_LOADING', true);
+            }, 200);
+
             try {
                 component = await import(`@/views/${route.name}Page/index.vue`);
             } catch (e) {
                 console.error(e);
             }
+
+            clearTimeout(timerId);
+            store.commit('SET_TOGGLE_ROUTE_LOADING', false);
+
             return component;
         },
     })),
