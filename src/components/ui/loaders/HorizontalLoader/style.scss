@@ -1,0 +1,37 @@
+.horizontal-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100vh;
+
+  & > div {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    margin: 5px;
+    animation: bounceOne 0.8s linear infinite;
+    background: black;
+  }
+}
+
+@for $i from 1 through 4 {
+  .horizontal-loader-container div:nth-child(#{$i}) {
+    animation-delay: $i*0.1s;
+  }
+}
+
+@keyframes bounceOne {
+  0%, 50%, 100% {
+    transform: scale(1.25);
+  }
+  25% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(1.75);
+  }
+  75% {
+    transform: scale(2.5);
+  }
+}

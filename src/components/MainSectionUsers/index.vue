@@ -64,6 +64,7 @@ const closeUserModal = () => {
         <BaseModal
             v-if="showModal"
             :is-open="showModal"
+            :loading-users="loading"
             @close="closeUserModal"
         >
             <UserDescriptionItem

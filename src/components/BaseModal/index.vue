@@ -7,11 +7,15 @@ export default {
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue';
 import CloseButton from '@/components/ui/buttons/CloseButton/index.vue';
+import HorizontalLoader from '@/components/ui/loaders/HorizontalLoader/index.vue';
 
 const emit = defineEmits(['close']);
 
-defineProps({
+const props = defineProps({
     isOpen: {
+        type: Boolean,
+    },
+    loadingUsers: {
         type: Boolean,
     },
 });
@@ -53,7 +57,8 @@ onUnmounted(() => {
                         <CloseButton @click="close" />
                     </div>
                     <div class="modal-body">
-                        <slot />
+                        <slot v-if="!props.loadingUsers" />
+                        <HorizontalLoader v-else />
                     </div>
                 </div>
             </div>
