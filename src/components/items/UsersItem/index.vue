@@ -32,6 +32,7 @@ const avatarPath = computed(() => {
             class="users__item-img"
             :src="`${avatarPath}`"
             alt="img"
+            loading="lazy"
         >
         <span class="users__item-name">{{ props.login }}</span>
     </div>
