@@ -1,16 +1,44 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/vue';
+import { it, describe, expect } from 'vitest';
+import { render, fireEvent } from '@testing-library/vue';
+import '@testing-library/jest-dom/extend-expect';
 import LoadButton from '@/components/ui/buttons/LoadButton/index.vue';
 
-describe('LoadButton', async () => {
-    it('text button currently', async () => {
-        const textButton = await screen.findByText('Загрузить еще');
-        await fireEvent.click(textButton);
+describe('LoadButton', () => {
+    it('should emit "load-users" event when clicked', async () => {
+        const { getByRole, emitted } = render(LoadButton, {
+            props: {
+                tag: 'button',
+                loading: false,
+            },
+        });
+
+        const button = getByRole('button');
+        await fireEvent.click(button);
+
+        expect(emitted()).toHaveProperty('load-users');
     });
 
-    it('has a button', async () => {
-        expect(findByTitle('button')).toBeTruthy();
+    it('should show loader when loading prop is true', () => {
+        const { getByTestId } = render(LoadButton, {
+            props: {
+                tag: 'button',
+                loading: true,
+            },
+        });
+
+        const loader = getByTestId('circle-loader');
+        expect(loader).toBeInTheDocument();
     });
 
-    const { findByTitle } = render(LoadButton);
+    it('should show "Загрузить еще" text when loading prop is false', () => {
+        const { getByText } = render(LoadButton, {
+            props: {
+                tag: 'button',
+                loading: false,
+            },
+        });
+
+        const buttonText = getByText('Загрузить еще');
+        expect(buttonText).toBeInTheDocument();
+    });
 });
